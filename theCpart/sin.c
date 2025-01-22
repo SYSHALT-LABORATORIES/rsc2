@@ -2,8 +2,8 @@
 #include <math.h>
 #include "something.h"
 
-int main(double argc, double **argv) {
+int main(int argc) {
     // code here
-   int sinof = sin(argc, argv);
+   int sinof = sin(argc);
    return EXIT_SUCCESS;
 }

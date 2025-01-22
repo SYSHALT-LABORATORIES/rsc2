@@ -2,8 +2,8 @@
 #include <math.h>
 #include "something.h"
 
-int main(double argc, double **argv) {
+int main(int argc) {
     // code here
-   int tanof = tan(argc, argv);
+   int tanof = tan(argc);
    return EXIT_SUCCESS;
 }

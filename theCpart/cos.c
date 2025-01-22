@@ -2,8 +2,8 @@
 #include <math.h>
 #include "something.h"
 
-int main(double argc, double **argv) {
+int main(int argc) {
     // code here
-   int cosof = cos(argc, argv);
+   int cosof = cos(argc);
    return EXIT_SUCCESS;
 }
