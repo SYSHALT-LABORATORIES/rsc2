@@ -1,9 +1,9 @@
-﻿@echo off
+@echo off
 setlocal enableextensions
 setlocal enabledelayedexpansion
 mode 80,25
-title rsc²
-cd c:\
+title rsc�
+REM cd c:\
 pushd core
 :OSMENU
 cls
@@ -26,7 +26,7 @@ batbox /c 0x1f
 echo.
 echo.
 batbox /d "			" && batbox /c 0x4E
-batbox /d "4 - Ruido"
+batbox /d "4 - Editor de texto"
 batbox /c 0x1f
 echo.
 echo.
