@@ -11,3 +11,5 @@
 
 #define C_AND &&
 #define C_NOTEQ !=
+#define EXIT_SUCCESS 0
+#define EXIT_FAIL 1
