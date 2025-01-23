@@ -3,6 +3,7 @@ setlocal enableextensions
 setlocal enabledelayedexpansion
 mode 80,25
 title editor
+color 0a
 
 :EDIT
 type pureScr.rgba
