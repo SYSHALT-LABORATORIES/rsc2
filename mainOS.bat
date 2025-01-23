@@ -70,5 +70,12 @@ if %_0% gtr 4 (
 	pause>nul
 	goto:OSMENU
 )
+
+if %_0% lss 1 (
+	batbox /c 0x14 && batbox /d "ERROR: Entrada invalida"
+	type bel.snd
+	pause>nul
+	goto:OSMENU
+)
 pause>nul
 goto:eof
