@@ -12,7 +12,7 @@ after the game failed miserably, we decided to make this a totally separated thi
 
 # Compilation
 
-please compile using "i686-mingw-w32-gcc file.c -o file.exe"
+please compile using ```i686-mingw-w32-gcc file.c -o file.exe```
 
 this is supposed to run in an x86 environment
 
@@ -20,4 +20,9 @@ if you want to make a port for x64 take note: **IT MIGHT NOT RUN CORRECTLY!**
 
 # Installation steps
 
-- 
+- make a file at Start Menu/Launch and paste ```@echo off && cd c:\ && call mainOS.bat```
+
+copy the repo to C:\ obviously
+
+if needed un-REM the "cd c:\" line at mainOS.bat
+
