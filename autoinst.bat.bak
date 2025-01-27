@@ -31,7 +31,7 @@ if EXIST %_fstabloc% (
     echo File copied.
 )
 
-IF EXIST C:\inf.rsc (
+IF EXIST C:\inf.dat (
     echo Already installed
     pause>nul
 )
