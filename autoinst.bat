@@ -2,7 +2,6 @@
 setlocal enableextensions
 set "_fautostart=@echo off&&cd / &&call mainOS.bat"
 set "_fstabloc=%AllUsersProfile%\Start Menu\Startup"
-set "_fstabloc10="
 
 
 echo ===========================================
@@ -36,7 +35,6 @@ IF EXIST C:\inf.rsc (
     pause>nul
 )
 
-set "_fstabloc10=                                       "
 
 REM malloc
 popd
