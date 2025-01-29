@@ -1,0 +1,20 @@
+.start
+@LOOP:
+    cls
+    syscall 8 pureScr.rgba
+    printf "\n"
+    printf "\n"
+    printf "Even/Odd Calculator"
+    input n "Number: "
+    mod n, 2 (i32 remains)
+    if (remains == 0 ) {
+        printf "Even"
+        pause
+        call LOOP
+    }
+    if (remains != 0) {
+        printf "Odd"
+        pause
+        call LOOP
+    }
+.close    
