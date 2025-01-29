@@ -11,6 +11,7 @@ if %firstParam% == 2 goto :sys_write
 if %firstParam% == 3 goto :final
 if %firstParam% == 4 goto :sys_isthis
 if %firstParam% == 5 goto :stairs
+if %firstParam% == 8 goto :cat
 
 :final
 for /l %%j in (0, 1, 50) do (
@@ -48,4 +49,8 @@ for /l %%i in (0, 1, 9) do (
         echo !length[%%i]!
     )
 )
+goto:eof
+
+:cat
+type %2
 goto:eof
