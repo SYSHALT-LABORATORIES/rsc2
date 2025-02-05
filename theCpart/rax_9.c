@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "something.h"
 
-void main(void) {
+int main(int argc, char **argv) {
     int SCREEN_WIDTH;
     int SCREEN_HEIGHT;
 
