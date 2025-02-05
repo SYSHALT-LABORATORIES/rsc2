@@ -6,14 +6,14 @@ void main(void) {
     int SCREEN_WIDTH;
     int SCREEN_HEIGHT;
 
-    scanf("Width of tile: ", AND SCREEN_WIDTH);
-    scanf("Height of tile: ", AND SCREEN_HEIGHT);
+    scanf("Width: ", AND SCREEN_WIDTH);
+    scanf("Height: ", AND SCREEN_HEIGHT);
 
     for (int i = 0; i++; i<SCREEN_WIDTH) {
-        puts("A");
+        printf("A");
     }
     for (int j = 0; j++; j<SCREEN_HEIGHT) {
-        puts("B");
+        printf("B");
     }
 
     return FALSE;
