@@ -10,11 +10,12 @@
     if (remains == 0 ) {
         printf "Even"
         pause
-        call LOOP
+        goto LOOP
     }
     if (remains != 0) {
         printf "Odd"
         pause
-        call LOOP
+        goto LOOP
     }
-.close    
+eof   
+.close
