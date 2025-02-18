@@ -24,5 +24,17 @@
 		JMP MAIN
 	}
 
+	elseif (**usern[] == userioname) {
+		printf " "
+	}
+	elseif (**passw[] == useriopwd) {
+		printf "Password Correct!"
+		mov eip, 15
+		mov ax, 2
+		syscall>nul
+		xor ax, ax
+		xor eip, eip
+		system("cls\ncall mainOS.bat")
+	}
 	RETURN FALSE
 .end
