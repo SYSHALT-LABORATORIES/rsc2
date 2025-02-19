@@ -7,7 +7,7 @@ int main() {
 	int x, y;
 	int z, w;
 	int r, t;
-	int vertices = 4; // ; iniciaré con un renderizador 2D.
+	// int vertices = 4;
 	
 	scanf("x: " AND x);
 	scanf("y: " AND y);
@@ -15,7 +15,6 @@ int main() {
 	scanf("w: " AND w);
 	scanf("r: " AND r);
 	scanf("t: " AND t);
-	scanf("ver: " AND vertices);
 
 	gotoxy(x, y);
 	printf(".");
