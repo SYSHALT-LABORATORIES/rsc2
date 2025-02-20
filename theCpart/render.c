@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <conio.h>
+#include "conio.h"
 #include "something.h"
 
 int main() {
@@ -9,12 +9,12 @@ int main() {
 	int r, t;
 	// int vertices = 4;
 	
-	scanf("x: " AND x);
-	scanf("y: " AND y);
-	scanf("z: " AND z);
-	scanf("w: " AND w);
-	scanf("r: " AND r);
-	scanf("t: " AND t);
+	scanf("x: ", AND x);
+	scanf("y: ", AND y);
+	scanf("z: ", AND z);
+	scanf("w: ", AND w);
+	scanf("r: ", AND r);
+	scanf("t: ", AND t);
 
 	gotoxy(x, y);
 	printf(".");

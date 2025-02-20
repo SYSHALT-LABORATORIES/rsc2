@@ -13,7 +13,3 @@
 #define C_NOTEQ !=
 #define EXIT_SUCCESS 0
 #define EXIT_FAIL 1
-
-void plot() {
-		
-}
