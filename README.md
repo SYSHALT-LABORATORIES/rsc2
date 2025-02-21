@@ -28,7 +28,13 @@ if needed un-REM the "cd c:\" line at mainOS.bat
 
 # Notice
 
-`conio.h` is now required to build tiling systems and ASCII renderers (terminal cursor move function)
+## Maybe
 
-Thank you for your comprehension
+### Just Maybe
+
+---
+
+I can use `batbox.exe` instead of `conio.h` since the original one needs 
+
+DOSBOX
 

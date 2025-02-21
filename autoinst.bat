@@ -35,7 +35,6 @@ IF EXIST C:\inf.rsc (
 )
 
 
-REM malloc
 popd
 copy * c:\
 pause
