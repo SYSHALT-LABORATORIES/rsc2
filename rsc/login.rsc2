@@ -1,0 +1,40 @@
+.start
+@MAIN:
+	mov eip, 8
+	syscall purescr.rgba
+	xor eip, eip
+	printf "\n\n"
+	input userioname, "Username: "
+	input useriopwd, "Password: "
+	for (i64 x, || NEQ contents("username.dat") {
+		arr usern[x] = x
+	}
+	for (i64 y, || NEQ contents("password.dat") {
+		arr passw[y] = y
+	}
+	
+@CHECK:
+	if (**usern[] != userioname) {
+		printf "Wrong username"
+		JMP MAIN
+	}
+	
+	if (**passw[] != useriopwd) {
+		printf "Wrong password"
+		JMP MAIN
+	}
+
+	elseif (**usern[] == userioname) {
+		printf " "
+	}
+	elseif (**passw[] == useriopwd) {
+		printf "Password Correct!"
+		mov eip, 15
+		mov ax, 2
+		syscall>nul
+		xor ax, ax
+		xor eip, eip
+		system("cls\ncall mainOS.bat")
+	}
+	RETURN FALSE
+.end

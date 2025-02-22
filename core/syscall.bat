@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 setlocal enableextensions
 
-:: I386-ASM INSTRUCTION SET ::
+:: RSCÂ-ASM INSTRUCTION SET ::
 
 :START
 set /a firstParam=%1
@@ -12,6 +12,7 @@ if %firstParam% == 3 goto :final
 if %firstParam% == 4 goto :sys_isthis
 if %firstParam% == 5 goto :stairs
 if %firstParam% == 8 goto :cat
+if %firstParam% == 15 goto :ping
 
 :final
 for /l %%j in (0, 1, 50) do (
@@ -53,4 +54,8 @@ goto:eof
 
 :cat
 type %2
+goto:eof
+
+:ping
+ping -n %2 localhost>nul
 goto:eof

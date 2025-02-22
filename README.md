@@ -26,3 +26,15 @@ copy the repo to C:\ obviously
 
 if needed un-REM the "cd c:\" line at mainOS.bat
 
+# Notice
+
+## Maybe
+
+### Just Maybe
+
+---
+
+I can use `batbox.exe` instead of `conio.h` since the original one needs 
+
+DOSBOX
+
