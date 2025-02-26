@@ -1,0 +1,43 @@
+.start
+malloc exc, 4
+malloc ids, 4
+malloc dsi, 4
+malloc dso, 4
+malloc listof, 4
+malloc ah
+arr listof[sizeof->listof], 0
+
+int x, y, z, w
+x = getio("X: ", x)
+y = getio("Y: ", y)
+z = getio("Z: ", z)
+w = getio("W: ", w)
+
+strncpy(exc, "%u8i", x)
+strncpy(ids, "%u8i", y)
+strncpy(dsi, "%u8i", z)
+strncpy(dso, "%u8i", w)
+
+malloc space, " "
+listof->Delims = \e+\e
+arr listof = ["exc"+"ids"+"dsi"+"dso"]
+
+FOR (I64 index=0 index++ index<4) {
+    mov ah, listof[index] # [+1]
+    mov fr, listof[index+1]
+    string command = "batbox /g"
+    strcat(command, space, listof[index], listof[index+1])
+
+    IF (fr>sizeof(ah)) {
+        xor fr, fr
+        xor ah, ah
+        ret
+    }
+
+    system(command)
+    printf("[]")
+    memset command, 0
+}
+
+free exc, ids, dsi, dso, listof, command, fr, ah
+.close

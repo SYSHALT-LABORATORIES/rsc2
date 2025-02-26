@@ -1,28 +1,28 @@
-/*
-*
-*
-*   SYSHALT LABORATORIES 
-*   RENDERER FOR RSC2
-*
-*   READ LICENSE
-*
-*
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+#include <string.h>
 #include "something.h"
 
-int main(void)
-{
-  int x, y = 200;
-  int z, w = 200;
+int main(void) {
+    char exc[4]; // x copy to
+    char ids[4]; // y copy to
+    char dsi[4]; // z copy to
+    char dso[4]; // w copy from
 
-  int *ptr;
-  //int vertices = 4;
+    int x, y, z, w;
+    x = scanf("v1 position: ", &x);
+    y = scanf("v2 position: ", &y);
+    z = scanf("v3 position: ", &z);
+    w = scanf("v4 position: ", &w);
 
-  system("batbox /g ", x, y);
+    sprintf(exc, "%d", x);
+    sprintf(ids, "%d", y);
+    sprintf(dsi, "%d", z);
+    sprintf(dso, "%d", w);
 
-  return EXIT_SUCCESS;
+    char space[] = " ";
+    char *Command = "batbox /g";
+    unmessup(Command, space, exc, ids, dsi, dso); /* Absolutely evil. */
+
+    return EXIT_SUCCESS;
 }
