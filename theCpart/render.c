@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "something.h"
 
 int main(void) {
     char exc[4]; // x copy to
@@ -21,40 +22,7 @@ int main(void) {
 
     char space[] = " ";
     char *Command = "batbox /g";
-    strcat(Command, space); // "batbox /g "
-    strcat(Command, exc); // "batbox /g (x)"
-    strcat(Command, space); // "batbox /g (x) "
-    strcat(Command, ids); // "batbox /g (x) (y)"
-    
-    system(Command);
-    printf(".");
-    memset(Command, 0, sizeof(Command));
-    strcat(Command, "batbox /g");
-    strcat(Command, space); // "batbox /g "
-    strcat(Command, dsi); // "batbox /g (z)"
-    strcat(Command, space); // "batbox /g (z) "
-    strcat(Command, dso); // "batbox /g (z) (w)"
-    system(Command);
-    printf(".");
-    memset(Command, 0, sizeof(Command));
-
-    strcat(Command, "batbox /g");
-    strcat(Command, space); // "batbox /g "
-    strcat(Command, exc); // "batbox /g (x)"
-    strcat(Command, space); // "batbox /g (x) "
-    strcat(Command, dsi); // "batbox /g (x) (z)"
-    system(Command);
-    printf(".");
-    memset(Command, 0, sizeof(Command));
-
-    strcat(Command, "batbox /g");
-    strcat(Command, space); // "batbox /g "
-    strcat(Command, ids); // "batbox /g (y)"
-    strcat(Command, space); // "batbox /g (y) "
-    strcat(Command, dso); // "batbox /g (y) (w)"
-    system(Command);
-    printf(".");
-    memset(Command, 0, sizeof(Command));
+    unmessup(Command, space, exc, ids, dsi, dso); /* Absolutely evil. */
 
     return EXIT_SUCCESS;
 }
