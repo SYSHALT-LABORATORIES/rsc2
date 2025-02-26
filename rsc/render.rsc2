@@ -21,11 +21,11 @@ strncpy(dso, "%u8i", w)
 malloc space, " "
 listof->Delims = \e+\e
 arr listof = ["exc"+"ids"+"dsi"+"dso"]
-string command = "batbox /g"
 
 FOR (I64 index=0 index++ index<4) {
     mov ah, listof[index] # [+1]
     mov fr, listof[index+1]
+    string command = "batbox /g"
     strcat(command, space, listof[index], listof[index+1])
 
     IF (fr>sizeof(ah)) {
