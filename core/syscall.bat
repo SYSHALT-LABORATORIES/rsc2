@@ -13,6 +13,7 @@ if %firstParam% == 4 goto :sys_isthis
 if %firstParam% == 5 goto :stairs
 if %firstParam% == 8 goto :cat
 if %firstParam% == 15 goto :ping
+if %firstParam% == 21 goto :randomal
 
 :final
 for /l %%j in (0, 1, 50) do (
@@ -59,3 +60,19 @@ goto:eof
 :ping
 ping -n %2 localhost>nul
 goto:eof
+
+:randomal
+	for /l %%e in (0, 1, !random:0,3!) do (
+		REM same question over here
+		REM hahah
+		REM im going insane :D
+
+		set /a al=%%e / 4
+
+		set /a "ah=0,ah=!random!"
+		set /a ah=%ah%*%ah%
+		set /a ah=%ah% / !al!
+		set /a ah=%ah% - !al!
+		set /a ah=%ah% + %al% * %ah%
+	)
+	goto:eof
