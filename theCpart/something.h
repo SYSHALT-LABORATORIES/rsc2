@@ -14,7 +14,7 @@
 #define EXIT_SUCCESS 0
 #define EXIT_FAIL 1
 
-int unmessup (comm, s, e, i, d, ds) {
+int unmessup (char *comm, int *s, int *e, int *i, int *d, int *ds) {
     strcat(comm, s); // "batbox /g "
     strcat(comm, e); // "batbox /g (x)"
     strcat(comm, s); // "batbox /g (x) "
