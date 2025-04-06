@@ -39,8 +39,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/João/Desktop/rsc computer design stuff/main/theCpart/wmde",
-      "program": "c:/Users/João/Desktop/rsc computer design stuff/main/theCpart/wmde/build/Debug/outDebug",
+      "cwd": ".",
+      "program": "build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
