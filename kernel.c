@@ -9,5 +9,13 @@
 #include "theCpart/wmde/include/de.h"
 
 int main(void) {
+    const char *name = "rsc2";
+    char *vidmem = (char*)0xb8000; // video memory
+				   // maybe implement clrscr syscall
+				   // so conio.h works
+				   // idk man
+    for(EVER) {
+        desktop();
+    }
     return 0;
 }

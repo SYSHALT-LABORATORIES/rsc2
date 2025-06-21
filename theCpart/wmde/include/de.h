@@ -10,6 +10,7 @@
 
 #include <time.h>
 #include <stdbool.h>
+#include <math.h>
 
 #define KB_UP 72
 #define KB_DOWN 80
@@ -71,7 +72,7 @@ int draw_window(int w, int h, int x, int y) { /* going to add char *buf later, n
 int draw_circle(int w, int h, int x, int y) {
     c_gotoxy(x, y);
     int radius = h/2+w*w/(h*8);
-    int negative_radius = abs(radius);
+    int negative_radius = radius * -1;
     int computed_value;
     int expected_value = radius * radius;
     for (int i = negative_radius; i <= radius; i++) {
@@ -92,10 +93,21 @@ int draw_clock_widget(bool digital) {
     time_t hora = time(NULL);
     char *time_str = ctime(&hora);
     time_str[strlen(time_str) - 1] = '\0';
-    if (!digital) { // TODO: Implement triangle drawing + rotation so this actually is a clock
-        draw_window(30, 25, 40, 15);
-        c_gotoxy(15, 5);
-        draw_circle(10, 10, 15, 5);
+    int ms;
+    
+    if (!digital) { // TODO: implement rotation so this actually is a clock
+        int rotclock[16]; // limited to X rot
+        for (EVER) {
+            ms++;
+            rotclock[ms] = round(ms / 1000);
+            draw_window(30, 25, 40, 15);
+            c_gotoxy(15, 5);
+            draw_circle(10, 10, 15, 5);
+            draw_triangle(4, 4, rotclock[ms], 5);
+	    if (ms > 16) {
+		    ms = 0;
+	    }
+        }
         return 42;
     }
     else {
@@ -107,3 +119,38 @@ int draw_clock_widget(bool digital) {
     }
 }
 
+int draw_dropdown(int w, int h, int x, int y) {
+    int dist;
+    int halfx, halfy;
+    c_gotoxy((round(w / 2)), (round(h / 2))); /* evil integer math */
+    draw_window(w, h, x, y);
+     /* Splitting */
+
+    halfx = round(x/2);
+    halfy = round(y/2);
+
+    c_gotoxy(halfx, halfy); /* Go to middle of window */
+    dist = halfx - halfy; // calculate distance between splits
+    int ite = y / dist;
+
+    for (int k = 0; k<ite; k++) {
+        c_gotoxy(k, k);
+        printf("-");
+    }
+
+}
+int draw_triangle(int w, int h, int x, int y) {
+   	int ia, space, ka = 0;
+	c_gotoxy(x, y);
+	for (ia = 1; ia <= h; ++ia, ka=0) {
+		for (space = 1; space <= h - ia; ++space) {
+			printf("  ");
+		}
+		while (ka != 2 * ia - 1) {
+			printf("* ");
+			++ka;
+		}
+		printf("\n");
+	}
+	return 0;
+}
