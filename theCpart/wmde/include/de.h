@@ -103,7 +103,7 @@ int draw_clock_widget(bool digital) {
             draw_window(30, 25, 40, 15);
             c_gotoxy(15, 5);
             draw_circle(10, 10, 15, 5);
-            draw_triangle(4, 4, rotclock[ms], 5);
+            // theoreticaldraw_triangle(4, 4, rotclock[ms], 5);
 	    if (ms > 16) {
 		    ms = 0;
 	    }
@@ -153,4 +153,9 @@ int draw_triangle(int w, int h, int x, int y) {
 		printf("\n");
 	}
 	return 0;
+}
+
+int calc_icon_grid_desktop(int scrw, int scrh) {
+	int grid_size = scrw * scrh;
+	char grid[grid_size];
 }
