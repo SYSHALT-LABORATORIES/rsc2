@@ -1,0 +1,18 @@
+while RUNNING:
+  access element x and y of buffer 1, save background
+  refresh
+  load background ram
+  access element x and y of buffer 2, save foreground
+  refresh 
+  load foreground ram 
+  image = buffer 1 & buffer 2
+  refresh
+  unload all
+
+
+  / o / o / o / o /    
+                       
+  For the triangle rotation thingy:
+    * create 1d rotation matrix in Y axis
+    * revolve around it using integrals!!!11!!
+    * increment it by speed of 1s, 1m or 1hr

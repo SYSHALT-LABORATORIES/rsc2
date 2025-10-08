@@ -1,0 +1,1 @@
+[x] make a LUT matrix for the commands
