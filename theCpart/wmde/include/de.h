@@ -11,6 +11,8 @@
 #include <time.h>
 #include <stdbool.h>
 #include <math.h>
+#include "conio.c"
+#include "conio.h"
 
 #define KB_UP 72
 #define KB_DOWN 80
@@ -18,6 +20,10 @@
 #define KB_RIGHT 39
 #define KB_ESCAPE 27
 #define KB_F8 66
+
+typedef struct {
+ int x, y;
+} Icon;
 
 int draw_window(int w, int h, int x, int y) { /* going to add char *buf later, need to make double buffer clean,
 						since we don't have more than one layer (a window on top of ano
@@ -155,7 +161,37 @@ int draw_triangle(int w, int h, int x, int y) {
 	return 0;
 }
 
-int calc_icon_grid_desktop(int scrw, int scrh) {
-	int grid_size = scrw * scrh;
+int calc_icon_grid_desktop(int scrw, int scrh, Icon *ico) {
+	int grid_size = round((scrh*scrw) / 10);
 	char grid[grid_size];
+  if (ico->x % scrw != 0) { // not divisible, move to nearest
+    // check for left 
+    int leftc = round(ico->x - grid_size);
+    if (leftc % scrw == 0 ) {
+      // use left, then
+      ico->x = leftc;
+    } else {
+      // check right
+      int rightc = round(ico->x+grid_size);
+      if (rightc % scrw == 0) {
+        // use right, then 
+        ico->x = rightc;
+      } else {
+        break; // girl sorry idk? get another monitor?? (for now)
+      }
+  }
+  if (ico->y % scrh != 0) {
+    int downc = round(ico->y - grid_size);
+    if (downc % scrh == 0 ) {
+      ico->y = downc;
+    } else {
+      int upc = round(ico->y+grid_size);
+      if(upc % scrh == 0) {
+        ico->y = upc;
+      } else {
+        break;
+      }
+    }
+    }
+  }
 }

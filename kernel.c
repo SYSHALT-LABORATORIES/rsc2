@@ -11,9 +11,7 @@
 int main(void) {
     const char *name = "rsc2";
     char *vidmem = (char*)0xb8000; // video memory
-				   // maybe implement clrscr syscall
-				   // so conio.h works
-				   // idk man
+	  // implement .exe running tech
     for(EVER) {
         desktop();
     }

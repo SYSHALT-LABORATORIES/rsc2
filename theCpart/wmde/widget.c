@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "include/conio.h"
-#include "include/conio.c"
 #include "include/de.h"
 
 int main(void) { // to compile separate use int main(void), this is for /kernel.c

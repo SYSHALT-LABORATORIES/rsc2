@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include "include/conio.c"
-#include "include/conio.h"
 #include "include/de.h"
 #include "include/png.h"
 
