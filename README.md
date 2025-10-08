@@ -2,13 +2,7 @@
 
 custom CLI DE for Server2003 with a kernel (partial-OS)
 
-# The syscall.bat incident (1930)
-
-very long story shortened: we were making a custom OS for 1930 with a ROM interpreter
-
-and a custom compiler that made the RPGMaker files a garbled binary file
-
-after the game failed miserably, we decided to make this a totally separated thing
+[![C/C++ CI](https://github.com/SYSHALT-LABORATORIES/rsc2/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/SYSHALT-LABORATORIES/rsc2/actions/workflows/c-cpp.yml)
 
 # Compilation
 
@@ -25,3 +19,5 @@ if you want to make a port for x64 take note: **IT MIGHT NOT RUN CORRECTLY!**
 copy the repo to C:\ obviously
 
 if needed un-REM the "cd c:\" line at mainOS.bat
+> [!WARNING]
+> Installation steps are deprecated.
