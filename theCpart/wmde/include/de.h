@@ -107,3 +107,48 @@ int draw_clock_widget(bool digital) {
     }
 }
 
+const char* getfield(char* line, int num) { // csv parsing
+	const char* tok;
+	for (tok = strtok(line, ";");
+			tok && *tok;
+			tok = strtok(NULL, ";\n"))
+	{
+		if (!--num) {
+			return tok;
+	}}
+	return NULL;
+}
+
+int compare(const void* a, const void* b) { // for qsort(...);
+	return (*(int*) a - *(int*) b);
+}
+
+void draw_graph2d_line (FILE* csv) {
+	char line[1024];
+	char vidbuf[80][25] = {' '}; //80x25 res
+	int origin_x; // origin point for X in graph
+	int origin_y; // origin point for Y in graph
+	int currentv_x; // current vertex's X pos
+	int currentv_y; // current vertex's Y pos
+	int diff_x;
+	int diff_y;
+
+	while (fgets(line, 1024, csv)) {
+		char *tmp = strdup(line);
+		int curtmpel = tmp;
+		qsort( line, sizeof(line) / sizeof(line[0]),sizeof(int), compare );
+       		origin_x = line[0]; // 1st lesser element
+        	origin_y = line[1]; // 2nd lesser element 
+		if ( tmp > curtmpel  ) {
+			currentv_y += ceil(origin_x - origin_y & 2);
+		} else {
+			currentv_y -= ceil(origin_x + origin_y | 2);	
+		} 
+		draw_window(50, 50, 50, 50);
+		c_gotoxy(origin_x, origin_y);
+		printf("A");
+		free(tmp);
+		c_clrscr();
+	}
+} 
+

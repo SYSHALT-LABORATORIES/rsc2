@@ -4,6 +4,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
+#include "wmde/include/conio.h"
+#include "wmde/include/conio.c"
+#include "wmde/include/de.h"
+#include <math.h>
 
 #define HELP 32
 #define GUI  16
@@ -27,6 +31,7 @@ int help(void) {
     printf("shutdown  > shutdown system\n");
     printf("cls/clear > clear screen\n");
     printf("exit      > quit interpreter\n");
+    printf("graph2d   > line graph out of csv\n");
     return HELP;
 }
 
@@ -48,6 +53,12 @@ void off(void) {
 void exit_command(void) {
     printf("Exiting command interpreter.\n");
     exit(0);
+	}
+
+void graph2d( void) {
+	FILE *csvptr = fopen("vcs.csv", "r");
+	draw_graph2d_line(csvptr);	
+	fclose(csvptr);
 }
 
 Command commands[] = {
@@ -57,6 +68,7 @@ Command commands[] = {
     {"clear", clrscr, "clear screen"},
     {"shutdown", off, "shutdown computer via outw"},
     {"exit", exit_command, "exit interpreter"},
+    {"graph2d", graph2d, "make a graph out of csv"},
     {NULL, NULL, NULL}
 };
 
