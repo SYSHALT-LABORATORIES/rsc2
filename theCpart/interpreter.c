@@ -30,7 +30,7 @@ int help(void) {
     printf("reboot    > restart system\n");
     printf("shutdown  > shutdown system\n");
     printf("cls/clear > clear screen\n");
-    printf("exit      > quit interpreter\n");
+    printf("exit      > exit interpreter\n");
     printf("graph2d   > line graph out of csv\n");
     return HELP;
 }

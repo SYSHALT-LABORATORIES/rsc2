@@ -133,7 +133,8 @@ void draw_graph2d_line (FILE* csv) {
 	int diff_x;
 	int diff_y;
 
-	while (fgets(line, 1024, csv)) {
+//	malloc(line, sizeof(line));                      too many args kekw
+	while (fgets(line, 1023, csv)) {
 		char *tmp = strdup(line);
 		int curtmpel = tmp;
 		qsort( line, sizeof(line) / sizeof(line[0]),sizeof(int), compare );
@@ -150,5 +151,6 @@ void draw_graph2d_line (FILE* csv) {
 		free(tmp);
 		c_clrscr();
 	}
+	free(line);
 } 
 

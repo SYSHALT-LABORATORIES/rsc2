@@ -27,18 +27,26 @@ int main(void) { // to compile separate use int main(void), this is for /kernel.
 			posy = 1000;
 			w  = w * 5;
 			h  = h * 10;
+			c_gotoxy(posx, posy);
+			draw_window(w,h,posx,posy);
 		} if (key_code == KB_DOWN) {
 			posy = -1000;
 		        w = w * 5;
 			h = h * 10;
+			c_gotoxy(posx, posy);
+			draw_window(w,h,posx,posy);
 		} if (key_code == KB_LEFT) {
 		       posx = -1000;
 	       	       w = w * 3;
 		       h = (h * 3) + w;	
+		       c_gotoxy(posx, posy);
+		       draw_window(w,h,posx,posy);
 		} if (key_code == KB_RIGHT) {
 		        posx = 1000;
 		        w = w * 5;
 			h = h * 10;
+			c_gotoxy(posx, posy);
+			draw_window(w,h,posx,posy   );
 		}   	   
 	}
     }
