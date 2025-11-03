@@ -1,0 +1,12 @@
+SYSCALL TABLE FOR RSC²
+
+/* DESKTOP ENV  */
+
+ID 0             =>       draw_window(int w, int h, int x, int y)
+ID 1             =>       draw_circle(int w, int h, int x, int y)
+ID 2             =>       draw_clock_widget(bool digital)
+ID 3             =>       getfield(char* line, int num)
+ID 4             =>       compare(const void* a, const void* b)
+ID 5             =>       draw_graph2d_line(FILE* csv)
+
+/* INTERPRETER */

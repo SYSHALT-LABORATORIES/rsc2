@@ -8,8 +8,10 @@
 #define PI 3.14159
 #define EVER ;;
 
+#include <math.h> /* can create problems with possible dupes but later fixable*/
 #include <time.h>
 #include <stdbool.h>
+// #include <stdlib.h> duplicate
 
 #define KB_UP 72
 #define KB_DOWN 80
@@ -37,13 +39,13 @@ int draw_window(int w, int h, int x, int y) { /* going to add char *buf later, n
 
     for (int i = 2; i < h; i++) {
         c_gotoxy(1, i);
-        printf("|"); 
+        printf("|");
         for (int j = 2; j < w; j++) {
             printf(" ");
         }
         if (w > 1) {
             c_gotoxy(w, i);
-            printf("|"); 
+            printf("|");
         }
         printf("\n");
     }
@@ -123,34 +125,59 @@ int compare(const void* a, const void* b) { // for qsort(...);
 	return (*(int*) a - *(int*) b);
 }
 
-void draw_graph2d_line (FILE* csv) {
-	char line[1024];
-	char vidbuf[80][25] = {' '}; //80x25 res
-	int origin_x; // origin point for X in graph
-	int origin_y; // origin point for Y in graph
-	int currentv_x; // current vertex's X pos
-	int currentv_y; // current vertex's Y pos
-	int diff_x;
-	int diff_y;
+void draw_line_ascii(int x0, int y0, int x1, int y1, char ch) {
+    int dx = abs(x1 - x0);
+    int sx = (x0 < x1) ? 1 : -1;
+    int dy = -abs(y1 - y0);
+    int sy = (y0 < y1) ? 1 : -1;
+    int err = dx + dy;
+    int e2;
 
-//	malloc(line, sizeof(line));                      too many args kekw
-	while (fgets(line, 1023, csv)) {
-		char *tmp = strdup(line);
-		int curtmpel = tmp;
-		qsort( line, sizeof(line) / sizeof(line[0]),sizeof(int), compare );
-       		origin_x = line[0]; // 1st lesser element
-        	origin_y = line[1]; // 2nd lesser element 
-		if ( tmp > curtmpel  ) {
-			currentv_y += ceil(origin_x - origin_y & 2);
-		} else {
-			currentv_y -= ceil(origin_x + origin_y | 2);	
-		} 
-		draw_window(50, 50, 50, 50);
-		c_gotoxy(origin_x, origin_y);
-		printf("A");
-		free(tmp);
-		c_clrscr();
-	}
-	free(line);
-} 
+    while (1) {
+        c_gotoxy(x0, y0);
+        putchar(ch);
+        if (x0 == x1 && y0 == y1) break;
+        e2 = 2 * err;
+        if (e2 >= dy) { err += dy; x0 += sx; }
+        if (e2 <= dx) { err += dx; y0 += sy; }
+    }
+}
 
+void draw_graph2d_line(FILE *csv) {
+    char line[1024];
+    int prev_x = -1, prev_y = -1;
+    int origin_x = 0, origin_y = 0;
+
+    while (fgets(line, sizeof(line), csv)) {
+        char *tmp = strdup(line);
+        if (!tmp) continue;
+
+        int x = atoi(getfield(tmp, 1));
+        int y = atoi(getfield(tmp, 2));
+
+        //free(tmp);        why we freeing stack
+
+        if (prev_x == -1 && prev_y == -1) {
+            origin_x = x;
+            origin_y = y;
+            prev_x = x;
+            prev_y = y;
+            continue;
+        }
+
+        int diff_x = x - origin_x;
+        int diff_y = y - origin_y;
+
+        int scr_x0 = 5 + prev_x;
+        int scr_y0 = 20 - prev_y;
+        int scr_x1 = 5 + diff_x;
+        int scr_y1 = 20 - diff_y;
+
+        draw_line_ascii(scr_x0, scr_y0, scr_x1, scr_y1, '*');
+
+        prev_x = x;
+        prev_y = y;
+    }
+
+    draw_window(60, 25, 2, 1);
+}

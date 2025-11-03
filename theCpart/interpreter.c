@@ -56,8 +56,10 @@ void exit_command(void) {
 	}
 
 void graph2d( void) {
-	FILE *csvptr = fopen("vcs.csv", "r");
-	draw_graph2d_line(csvptr);	
+  FILE *csvptr;
+  const char *lechuga = "lechuga.csv";
+  csvptr = fopen(lechuga, "r");
+  draw_graph2d_line(csvptr);
 	fclose(csvptr);
 }
 
@@ -88,15 +90,22 @@ int main(void) {
     const int mcl = 256;
     char* command_buf = malloc(mcl * sizeof(char));
 
-    fptr = fopen(fname, "r");
-
+    fptr = fopen(fname, "rb");
     if (fptr == NULL) {
 	printf("Splash screen didn't load correctly.");
     }
 
-    while((c = fgetc(fptr)) != EOF) {
-	printf("%c", c);    
-    }
+    #ifdef _WIN32
+       system("chcp 437 > nul");
+    #endif
+
+    #ifdef _RSC2PURE
+
+    #endif
+
+    while ((c = fgetc(fptr)) != EOF) {
+         putchar(c);
+     }
 
     fclose(fptr);
 

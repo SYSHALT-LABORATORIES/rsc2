@@ -1,2 +1,2 @@
 [x] make a LUT matrix for the commands
-[]  have the balls to rewrite syscalls
+[x]  have the balls to rewrite syscalls
