@@ -176,9 +176,7 @@ int calc_icon_grid_desktop(int scrw, int scrh, Icon *ico) {
       if (rightc % scrw == 0) {
         // use right, then 
         ico->x = rightc;
-      } else {
-        break; // girl sorry idk? get another monitor?? (for now)
-      }
+      } else 
   }
   if (ico->y % scrh != 0) {
     int downc = round(ico->y - grid_size);
@@ -188,8 +186,6 @@ int calc_icon_grid_desktop(int scrw, int scrh, Icon *ico) {
       int upc = round(ico->y+grid_size);
       if(upc % scrh == 0) {
         ico->y = upc;
-      } else {
-        break;
       }
     }
     }
