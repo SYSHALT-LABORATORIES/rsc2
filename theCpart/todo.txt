@@ -1,1 +1,5 @@
 [x] make a LUT matrix for the commands
+<<<<<<< HEAD
+=======
+[x]  have the balls to rewrite syscalls
+>>>>>>> refs/remotes/origin/main

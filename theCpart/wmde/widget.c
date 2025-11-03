@@ -17,11 +17,12 @@ int main(void) { // to compile separate use int main(void), this is for /kernel.
     char screen_buffer[2000]={' '};
 
     for(EVER) {
-        //c_clrscr();
+       // c_clrscr();
         draw_window(w, h, posx, posy);
-	if (_kbhit()) {
+	if (c_kbhit()) {
 		key_code = c_getch();
 		if (key_code == KB_UP) {
+<<<<<<< HEAD
            posx = 0;
 		  	   posy = 100;
 			     w = 80;
@@ -45,6 +46,31 @@ int main(void) { // to compile separate use int main(void), this is for /kernel.
 		       w = 40;
 		       h = 25;
 		       c_clrscr();
+=======
+			posy = 1000;
+			w  = w * 5;
+			h  = h * 10;
+			c_gotoxy(posx, posy);
+			draw_window(w,h,posx,posy);
+		} if (key_code == KB_DOWN) {
+			posy = -1000;
+		        w = w * 5;
+			h = h * 10;
+			c_gotoxy(posx, posy);
+			draw_window(w,h,posx,posy);
+		} if (key_code == KB_LEFT) {
+		       posx = -1000;
+	       	       w = w * 3;
+		       h = (h * 3) + w;	
+		       c_gotoxy(posx, posy);
+		       draw_window(w,h,posx,posy);
+		} if (key_code == KB_RIGHT) {
+		        posx = 1000;
+		        w = w * 5;
+			h = h * 10;
+			c_gotoxy(posx, posy);
+			draw_window(w,h,posx,posy   );
+>>>>>>> refs/remotes/origin/main
 		}   	   
 	}
     }

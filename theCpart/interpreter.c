@@ -4,6 +4,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
+#include "wmde/include/conio.h"
+#include "wmde/include/conio.c"
+#include "wmde/include/de.h"
+#include <math.h>
 
 #define HELP 32
 #define GUI  16
@@ -26,7 +30,8 @@ int help(void) {
     printf("reboot    > restart system\n");
     printf("shutdown  > shutdown system\n");
     printf("cls/clear > clear screen\n");
-    printf("exit      > quit interpreter\n");
+    printf("exit      > exit interpreter\n");
+    printf("graph2d   > line graph out of csv\n");
     return HELP;
 }
 
@@ -48,6 +53,14 @@ void off(void) {
 void exit_command(void) {
     printf("Exiting command interpreter.\n");
     exit(0);
+	}
+
+void graph2d( void) {
+  FILE *csvptr;
+  const char *lechuga = "lechuga.csv";
+  csvptr = fopen(lechuga, "r");
+  draw_graph2d_line(csvptr);
+	fclose(csvptr);
 }
 
 Command commands[] = {
@@ -57,6 +70,7 @@ Command commands[] = {
     {"clear", clrscr, "clear screen"},
     {"shutdown", off, "shutdown computer via outw"},
     {"exit", exit_command, "exit interpreter"},
+    {"graph2d", graph2d, "make a graph out of csv"},
     {NULL, NULL, NULL}
 };
 
@@ -76,15 +90,22 @@ int main(void) {
     const int mcl = 256;
     char* command_buf = malloc(mcl * sizeof(char));
 
-    fptr = fopen(fname, "r");
-
+    fptr = fopen(fname, "rb");
     if (fptr == NULL) {
 	printf("Splash screen didn't load correctly.");
     }
 
-    while((c = fgetc(fptr)) != EOF) {
-	printf("%c", c);    
-    }
+    #ifdef _WIN32
+       system("chcp 437 > nul");
+    #endif
+
+    #ifdef _RSC2PURE
+
+    #endif
+
+    while ((c = fgetc(fptr)) != EOF) {
+         putchar(c);
+     }
 
     fclose(fptr);
 
