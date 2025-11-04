@@ -2,3 +2,9 @@
    into a giant RGB16 matrix and export it to a .rgba
    which will be processed by the desktop module as another
    giant matrix (loading rgba data) to video memory page 1 */
+
+#include <stdbool.h>
+#include <stdlib.h>
+#include "include/hicolor.h"
+
+int main() {}

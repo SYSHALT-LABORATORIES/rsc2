@@ -11,13 +11,9 @@
 #include <math.h> /* can create problems with possible dupes but later fixable*/
 #include <time.h>
 #include <stdbool.h>
-<<<<<<< HEAD
-#include <math.h>
-#include "conio.c"
-#include "conio.h"
-=======
+
 // #include <stdlib.h> duplicate
->>>>>>> refs/remotes/origin/main
+
 
 #define KB_UP 72
 #define KB_DOWN 80
@@ -29,6 +25,7 @@
 typedef struct {
  int x, y;
 } Icon;
+
 
 int draw_window(int w, int h, int x, int y) { /* going to add char *buf later, need to make double buffer clean,
 						since we don't have more than one layer (a window on top of ano
@@ -105,7 +102,7 @@ int draw_clock_widget(bool digital) {
     char *time_str = ctime(&hora);
     time_str[strlen(time_str) - 1] = '\0';
     int ms;
-    
+
     if (!digital) { // TODO: implement rotation so this actually is a clock
         int rotclock[16]; // limited to X rot
         for (EVER) {
@@ -130,7 +127,6 @@ int draw_clock_widget(bool digital) {
     }
 }
 
-<<<<<<< HEAD
 int draw_dropdown(int w, int h, int x, int y) {
     int dist;
     int halfx, halfy;
@@ -171,7 +167,7 @@ int calc_icon_grid_desktop(int scrw, int scrh, Icon *ico) {
 	int grid_size = round((scrh*scrw) / 10);
 	char grid[grid_size];
   if (ico->x % scrw != 0) { // not divisible, move to nearest
-    // check for left 
+    // check for left
     int leftc = round(ico->x - grid_size);
     if (leftc % scrw == 0 ) {
       // use left, then
@@ -180,9 +176,9 @@ int calc_icon_grid_desktop(int scrw, int scrh, Icon *ico) {
       // check right
       int rightc = round(ico->x+grid_size);
       if (rightc % scrw == 0) {
-        // use right, then 
+        // use right, then
         ico->x = rightc;
-      } else 
+      } else
   }
   if (ico->y % scrh != 0) {
     int downc = round(ico->y - grid_size);
@@ -196,7 +192,7 @@ int calc_icon_grid_desktop(int scrw, int scrh, Icon *ico) {
     }
     }
   }
-=======
+
 const char* getfield(char* line, int num) { // csv parsing
 	const char* tok;
 	for (tok = strtok(line, ";");
@@ -237,20 +233,27 @@ void draw_graph2d_line(FILE *csv) {
     int origin_x = 0, origin_y = 0;
 
     while (fgets(line, sizeof(line), csv)) {
-        char *tmp = strdup(line);
-        if (!tmp) continue;
+      char *tmp = strdup(line);
+      if (!tmp) continue;
 
-        int x = atoi(getfield(tmp, 1));
-        int y = atoi(getfield(tmp, 2));
+      char *field1 = (char*) getfield(tmp, 1);
+      char *field2 = (char*) getfield(tmp, 2);
+      if (!field1 || !field2) {
+        free(tmp);
+        continue; // skip malformed line
+      }
 
-        //free(tmp);        why we freeing stack
+      int x = atoi(field1);
+      int y = atoi(field2);
 
-        if (prev_x == -1 && prev_y == -1) {
-            origin_x = x;
-            origin_y = y;
-            prev_x = x;
-            prev_y = y;
-            continue;
+      free(tmp);
+
+      if (prev_x == -1 && prev_y == -1) {
+          origin_x = x;
+          origin_y = y;
+          prev_x = x;
+          prev_y = y;
+          continue;
         }
 
         int diff_x = x - origin_x;
@@ -266,7 +269,5 @@ void draw_graph2d_line(FILE *csv) {
         prev_x = x;
         prev_y = y;
     }
-
     draw_window(60, 25, 2, 1);
->>>>>>> refs/remotes/origin/main
 }
