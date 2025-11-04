@@ -10,3 +10,5 @@ ID 4             =>       compare(const void* a, const void* b)
 ID 5             =>       draw_graph2d_line(FILE* csv)
 
 /* INTERPRETER */
+
+ID 6             =>       ch_charset437();

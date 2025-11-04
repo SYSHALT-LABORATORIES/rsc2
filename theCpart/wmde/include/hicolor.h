@@ -7,8 +7,8 @@
  * SPDX-License-Identifier:
  ****************************************************************************/
 
- #include "include/de.h"
- #include "../kernel_syscalls.h"
+ #include "de.h"
+ #include "../../kernel_syscalls.h"
 
 typedef struct {int x; int y; u8 rgb[64][64][4096];} Sprite;
 typedef struct {int x; int y; u8 rgb[16][16][2048];} Hire;

@@ -100,7 +100,7 @@ int main(void) {
     #endif
 
     #ifdef _RSC2PURE
-
+	ch_charset437();
     #endif
 
     while ((c = fgetc(fptr)) != EOF) {
@@ -132,4 +132,5 @@ int main(void) {
 
     free(command_buf);
     return 0;
+}
 }

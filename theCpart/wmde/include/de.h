@@ -178,7 +178,7 @@ int calc_icon_grid_desktop(int scrw, int scrh, Icon *ico) {
       if (rightc % scrw == 0) {
         // use right, then
         ico->x = rightc;
-      } else
+      } //else                                 uncomment if psycho
   }
   if (ico->y % scrh != 0) {
     int downc = round(ico->y - grid_size);
@@ -229,8 +229,8 @@ void draw_line_ascii(int x0, int y0, int x1, int y1, char ch) {
 
 void draw_graph2d_line(FILE *csv) {
     char line[1024];
-    int prev_x = -1, prev_y = -1;
-    int origin_x = 0, origin_y = 0;
+    float prev_x = -1, prev_y = -1;
+    float origin_x = 0, origin_y = 0;
 
     while (fgets(line, sizeof(line), csv)) {
       char *tmp = strdup(line);
@@ -243,8 +243,8 @@ void draw_graph2d_line(FILE *csv) {
         continue; // skip malformed line
       }
 
-      int x = atoi(field1);
-      int y = atoi(field2);
+      float x = atof(field1);
+      float y = atof(field2);
 
       free(tmp);
 
