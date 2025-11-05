@@ -109,16 +109,16 @@ void c_gettextinfo(struct text_info *r)
 
 int c_kbhit(void)
 {
-  return _kbhit();
+  return c_kbhit();
 }
 int c_getch(void)
 {
-  return _getch();
+  return c_getch();
 }
 
 int c_getche(void)
 {
-  return _getche();
+  return c_getche();
 }
 
 void c_setcursortype(int cur_t)

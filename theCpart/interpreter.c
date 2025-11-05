@@ -1,4 +1,4 @@
-#include <sys/io.h>
+// #include <sys/io.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -24,7 +24,7 @@ typedef struct {
 } Command;
 
 
-int help(void) {
+void help(void) {
     printf("-+== COMMAND LIST ==+-\n");
     printf("help      > display commands\n");
     printf("reboot    > restart system\n");
@@ -32,7 +32,7 @@ int help(void) {
     printf("cls/clear > clear screen\n");
     printf("exit      > exit interpreter\n");
     printf("graph2d   > line graph out of csv\n");
-    return HELP;
+   //theyallvoidnow return HELP;
 }
 
 void reset(void) {
@@ -40,14 +40,15 @@ void reset(void) {
     asm volatile ("JMP 0xFFFF"); // triple fault reboot
 }
 
-int clrscr(void) {
+void clrscr(void) {
     printf("\033[2J\033[H");
-    return CLS;
+    //they all void now return CLS;
 }
 
 void off(void) {
     printf("Shutting down...\n");
-    outw(0x604, 0x2000); // QEMU shutdown
+   // linux env only outw(0x604, 0x2000); // QEMU shutdown
+   asm volatile("HLT"); // freeze my boi
 }
 
 void exit_command(void) {
