@@ -53,14 +53,14 @@ void off(void) {
 void exit_command(void) {
     printf("Exiting command interpreter.\n");
     exit(0);
-	}
+}
 
 void graph2d( void) {
   FILE *csvptr;
   const char *lechuga = "lechuga.csv";
   csvptr = fopen(lechuga, "r");
   draw_graph2d_line(csvptr);
-	fclose(csvptr);
+  fclose(csvptr);
 }
 
 Command commands[] = {
@@ -78,7 +78,7 @@ command_fn find_command(const char* name) {
     for (int i = 0; commands[i].name; i++) {
         if (strcmp(name, commands[i].name) == 0) {
             return commands[i].run;
-        }
+       }
     }
     return NULL;
 }
@@ -95,13 +95,13 @@ int main(void) {
 	printf("Splash screen didn't load correctly.");
     }
 
-    #ifdef _WIN32
-       system("chcp 437 > nul");
-    #endif
+    //#ifdef _WIN32
+      // system("chcp 437 > nul");
+   // #endif
 
-    #ifdef _RSC2PURE
-	ch_charset437();
-    #endif
+   // #ifdef _RSC2PURE
+	//ch_charset437();
+    //#endif
 
     while ((c = fgetc(fptr)) != EOF) {
          putchar(c);
@@ -132,5 +132,5 @@ int main(void) {
 
     free(command_buf);
     return 0;
-}
+	}
 }
