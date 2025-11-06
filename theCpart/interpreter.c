@@ -1,4 +1,4 @@
-// #include <sys/io.h>
+#include <sys/io.h> // Windows phobic
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -47,7 +47,7 @@ void clrscr(void) {
 
 void off(void) {
     printf("Shutting down...\n");
-   // linux env only outw(0x604, 0x2000); // QEMU shutdown
+   outw(0x604, 0x2000); // QEMU shutdown
    asm volatile("HLT"); // freeze my boi
 }
 
@@ -96,13 +96,13 @@ int main(void) {
 	printf("Splash screen didn't load correctly.");
     }
 
-    //#ifdef _WIN32
-      // system("chcp 437 > nul");
-   // #endif
+    #ifdef _WIN32
+       system("chcp 437 > nul");
+    #endif
 
-   // #ifdef _RSC2PURE
-	//ch_charset437();
-    //#endif
+   #ifdef _RSC2PURE
+	ch_charset437();
+    #endif
 
     while ((c = fgetc(fptr)) != EOF) {
          putchar(c);
@@ -133,5 +133,5 @@ int main(void) {
 
     free(command_buf);
     return 0;
-	}
+	
 }

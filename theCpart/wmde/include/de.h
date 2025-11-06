@@ -11,8 +11,11 @@
 #include <math.h> /* can create problems with possible dupes but later fixable*/
 #include <time.h>
 #include <stdbool.h>
+//#include "conio.c" /* dupe dupe bad bad */
+#include "conio.h" /* very bad dupe dupe*/
 
-// #include <stdlib.h> duplicate
+
+#include <stdlib.h>// duplicate
 
 
 #define KB_UP 72
@@ -192,7 +195,7 @@ int calc_icon_grid_desktop(int scrw, int scrh, Icon *ico) {
     }
     }
   }
-
+}
 const char* getfield(char* line, int num) { // csv parsing
 	const char* tok;
 	for (tok = strtok(line, ";");
@@ -209,7 +212,7 @@ int compare(const void* a, const void* b) { // for qsort(...);
 	return (*(int*) a - *(int*) b);
 }
 
-void draw_line_ascii(int x0, int y0, int x1, int y1, char ch) {
+void draw_line_ascii(int x0, int y0, int x1, int y1) {
     int dx = abs(x1 - x0);
     int sx = (x0 < x1) ? 1 : -1;
     int dy = -abs(y1 - y0);
@@ -219,7 +222,7 @@ void draw_line_ascii(int x0, int y0, int x1, int y1, char ch) {
 
     while (1) {
         c_gotoxy(x0, y0);
-        putchar(ch);
+        printf("*");
         if (x0 == x1 && y0 == y1) break;
         e2 = 2 * err;
         if (e2 >= dy) { err += dy; x0 += sx; }
@@ -264,7 +267,7 @@ void draw_graph2d_line(FILE *csv) {
         int scr_x1 = 5 + diff_x;
         int scr_y1 = 20 - diff_y;
 
-        draw_line_ascii(scr_x0, scr_y0, scr_x1, scr_y1, '*');
+        draw_line_ascii(scr_x0, scr_y0, scr_x1, scr_y1);
 
         prev_x = x;
         prev_y = y;
