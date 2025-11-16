@@ -21,16 +21,8 @@ typedef                  char*                            string;
 
 /* syscalls */
 
-void ch_charset437(void) {
-	_asm("mov ax, 0x0003 ; vid mode 3 (80x25 color text)\n\t
-		"int 0x10\n\t"
-		"mov ax, 0x1104\n\t"
-		"xor bx, bx     ; set to zero\n\t"
-		"xor dx, dx     ; set to zero, also.\n\t"
-		"int 0x10\n\t"
-		"mov ax, 0x6601\n\t"
-		"mov bx, 0x1b5\n\t"
-		"int 0x21\n\t"");
-
+void ch_charset437() {
+	__asm("nop");//                              Asm segfaults need to figure out
 }
+
 #endif

@@ -11,7 +11,7 @@
 #include <math.h> /* can create problems with possible dupes but later fixable*/
 #include <time.h>
 #include <stdbool.h>
-//#include "conio.c" /* dupe dupe bad bad */
+#include "conio.c" /* dupe dupe bad bad */
 #include "conio.h" /* very bad dupe dupe*/
 
 
@@ -172,25 +172,33 @@ int calc_icon_grid_desktop(int scrw, int scrh, Icon *ico) {
   if (ico->x % scrw != 0) { // not divisible, move to nearest
     // check for left
     int leftc = round(ico->x - grid_size);
+    printf("Before move left: %i", leftc);
     if (leftc % scrw == 0 ) {
       // use left, then
       ico->x = leftc;
+      printf("After move left: %i", leftc);
     } else {
       // check right
       int rightc = round(ico->x+grid_size);
+      printf("Before move right: %i", rightc);
       if (rightc % scrw == 0) {
         // use right, then
         ico->x = rightc;
+	printf("After move right: %i", rightc);
       } //else                                 uncomment if psycho
   }
   if (ico->y % scrh != 0) {
     int downc = round(ico->y - grid_size);
+    printf("Before move down: %i", downc);
     if (downc % scrh == 0 ) {
       ico->y = downc;
+      printf("After move down: %i", downc);
     } else {
       int upc = round(ico->y+grid_size);
+      printf("Before move up: %i", upc);
       if(upc % scrh == 0) {
         ico->y = upc;
+	printf("After move up: %i", upc);
       }
     }
     }

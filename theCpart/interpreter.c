@@ -8,6 +8,7 @@
 #include "wmde/include/conio.c"
 #include "wmde/include/de.h"
 #include <math.h>
+#include "kernel_syscalls.h"
 
 #define HELP 32
 #define GUI  16
@@ -24,7 +25,7 @@ typedef struct {
 } Command;
 
 
-void help(void) {
+int help(void) {
     printf("-+== COMMAND LIST ==+-\n");
     printf("help      > display commands\n");
     printf("reboot    > restart system\n");
@@ -32,7 +33,7 @@ void help(void) {
     printf("cls/clear > clear screen\n");
     printf("exit      > exit interpreter\n");
     printf("graph2d   > line graph out of csv\n");
-   //theyallvoidnow return HELP;
+    return HELP;
 }
 
 void reset(void) {
@@ -40,13 +41,13 @@ void reset(void) {
     asm volatile ("JMP 0xFFFF"); // triple fault reboot
 }
 
-void clrscr(void) {
+int clrscr(void) {
     printf("\033[2J\033[H");
-    //they all void now return CLS;
+    return CLS;
 }
 
 void off(void) {
-    printf("Shutting down...\n");
+   printf("Shutting down...\n");
    outw(0x604, 0x2000); // QEMU shutdown
    asm volatile("HLT"); // freeze my boi
 }
@@ -59,7 +60,7 @@ void exit_command(void) {
 void graph2d( void) {
   FILE *csvptr;
   const char *lechuga = "lechuga.csv";
-  csvptr = fopen(lechuga, "r");
+  csvptr = fopen(lechuga, "rb");
   draw_graph2d_line(csvptr);
   fclose(csvptr);
 }
@@ -100,9 +101,9 @@ int main(void) {
        system("chcp 437 > nul");
     #endif
 
-   #ifdef _RSC2PURE
+  // #ifdef _RSC2PURE
 	ch_charset437();
-    #endif
+    //#endif
 
     while ((c = fgetc(fptr)) != EOF) {
          putchar(c);

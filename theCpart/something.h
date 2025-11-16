@@ -1,4 +1,4 @@
-#define TRUE 1
+/*#define TRUE 1
 #define FALSE 0
 #define NULL ((void*) 0x0) 
 
@@ -13,7 +13,7 @@
 #define C_NOTEQ !=
 #define EXIT_SUCCESS 0
 #define EXIT_FAIL 1
-
+giant unused*/
 int unmessup (char *comm, int *s, int *e, int *i, int *d, int *ds) {
     strcat(comm, s); // "batbox /g "
     strcat(comm, e); // "batbox /g (x)"
