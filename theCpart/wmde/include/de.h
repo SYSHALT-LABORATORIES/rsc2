@@ -269,13 +269,13 @@ void draw_graph2d_line(FILE *csv) {
 
         int diff_x = x - origin_x;
         int diff_y = y - origin_y;
+		int scr_prev_x = 5 + (prev_x - origin_x);
+		int scr_prev_y = 20 - (prev_y - origin_y);
 
-        int scr_x0 = 5 + prev_x;
-        int scr_y0 = 20 - prev_y;
-        int scr_x1 = 5 + diff_x;
-        int scr_y1 = 20 - diff_y;
+		int scr_x = 5 + (x - origin_x);
+		int scr_y = 20 - (y - origin_y);
 
-        draw_line_ascii(scr_x0, scr_y0, scr_x1, scr_y1);
+		draw_line_ascii(scr_prev_x, scr_prev_y, scr_x, scr_y);
 
         prev_x = x;
         prev_y = y;
