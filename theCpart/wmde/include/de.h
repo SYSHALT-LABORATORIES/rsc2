@@ -16,7 +16,7 @@
 
 
 #include <stdlib.h>// duplicate
-
+#include <string.h>
 
 #define KB_UP 72
 #define KB_DOWN 80
