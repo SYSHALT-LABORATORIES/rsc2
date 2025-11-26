@@ -11,7 +11,7 @@
 #include <math.h> /* can create problems with possible dupes but later fixable*/
 #include <time.h>
 #include <stdbool.h>
-#include "conio.c" /* dupe dupe bad bad */
+//#include "conio.c" /* dupe dupe bad bad */
 #include "conio.h" /* very bad dupe dupe*/
 
 

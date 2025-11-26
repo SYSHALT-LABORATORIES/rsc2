@@ -66,13 +66,13 @@ void graph2d( void) {
 }
 
 Command commands[] = {
-    {"help", help, "display existent commands"},
-    {"reboot", reset, "restart computer using triple fault/non-ACPI"},
-    {"cls", clrscr, "clear screen"},
-    {"clear", clrscr, "clear screen"},
-    {"shutdown", off, "shutdown computer via outw"},
-    {"exit", exit_command, "exit interpreter"},
-    {"graph2d", graph2d, "make a graph out of csv"},
+    {"help", (void*) help, "command list"}, 
+    {"reboot", (void*) reset, "restart computer using triple fault/non-ACPI"},
+    {"cls", (void*) clrscr, "clear screen"},
+    {"clear", (void*) clrscr, "clear screen"},
+    {"shutdown", (void*) off, "shutdown computer via outw"},
+    {"exit", (void*) exit_command, "exit interpreter"},
+    {"graph2d", (void*) graph2d, "make a graph out of csv"},
     {NULL, NULL, NULL}
 };
 
