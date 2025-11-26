@@ -3,23 +3,23 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <stdint.h>
-
-//dupe again fuck#include "include/de.h"
 #include "include/hicolor.h"
+#include "include/conio.c"
 
 int main(void) {
-	Sprite displaytest;
+	Hire prueba;
 	int i;
 	int j;
+  int k;
 	printf("\n");
-	for(i = 0; i < 320; i++) {
-		for ( j=0; j <= 64; ++j) {
-			draw_window(60,40,30,30);
-			c_gotoxy(50, ceil(75/2));
-			displaytest.x = i;
-			displaytest.y = j-i;
-			displaytest.rgb[j][j][j] = rand()%255; 
-		
+	for (i = 0; i < 2047; i++) {
+		prueba.rgb[0][0][i] = i ^ 0x10;
+    for (j = 0; j < 2047; j++) {
+			printf("%c", prueba.rgb[0][0][i]);
 		}
+    for (k = 0; k < 15; k++) {
+      prueba.rgb[i][i][0] = k;
+      printf("%i", prueba.rgb[i][i][0]);
+    } 
 	}
 }

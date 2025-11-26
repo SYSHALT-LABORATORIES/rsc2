@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "include/de.h"
+#include "include/conio.c"
 
 int main(void ) {
     //int desired_size;

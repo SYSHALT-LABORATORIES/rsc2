@@ -11,12 +11,12 @@
 #include <math.h> /* can create problems with possible dupes but later fixable*/
 #include <time.h>
 #include <stdbool.h>
-#include "conio.c" /* dupe dupe bad bad */
+//#include "conio.c" /* dupe dupe bad bad */
 #include "conio.h" /* very bad dupe dupe*/
 
 
 #include <stdlib.h>// duplicate
-
+#include <string.h>
 
 #define KB_UP 72
 #define KB_DOWN 80
